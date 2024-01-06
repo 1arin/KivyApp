@@ -9,9 +9,19 @@
         ma_bg_color: 1, 170/255, 23/255, 1
 
     MDLabel:
-    text: "Task1"
-    markup: True
-    font_name: "poppins-SemiBold.ttf"
+        text: "Task1"
+        markup: True
+        font_name: "poppins-SemiBold.ttf"
+        fonr_size: "20sp"
+        size_hint: .8
+        pos_hint: {"center_x": .46, "center_y": .8}
+    
+    MDCheckBox:
+        size_hint: None, None
+        size: "48dp"
+        unselected_color: 1, 170/255, 23/255, 1
+        selected_color:0, 179/255, 0, 1
+        pos_hint: {"center_x": .95, "center_y": .8}
 
 MDScreen:
     name: "main"
