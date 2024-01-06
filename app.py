@@ -1,12 +1,10 @@
 import kivy
-from kivy.app import App
-from kivy.uix.label import Label
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.textinput import TextInput
+import datetime
 
-class MyApp(App):
-    def build(self):
-        return Label(text="THis is my app")
-    
-if __name__ == "__main__":
-    MyApp().run()
+from kivy.uix.screenmanager import ScreenManager
+from kivymd.app import MDApp
+from kivy.lang import Builder 
+from kivy.properties import StringProperty
+from datetime import date
+from kivy.uix.behaviors import FakeRectangularElevationBehavior
+from kivy.core import window
