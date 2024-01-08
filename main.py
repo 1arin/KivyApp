@@ -8,7 +8,7 @@ class DialogContent(MDBoxLayout):
     #this is for class constructor
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.ids.date_text.text=datetime.now().strtime("%A %d %B %Y")
+        self.ids.date_text.text=datetime.now().strftime("%A %d %B %Y")
 
     #this func wil show the date picker
     def show_date_picker(self):
@@ -26,7 +26,7 @@ class MainApp(MDApp):
     def build(self):
         self.theme_cls.primary_palette=("Teal")
 
-    def show_task_function(self):
+    def show_task_dialog(self):
         if not self.task_list_dialog:
             self.task_list_dialog = MDDialog(
                 title = "Create Task",
