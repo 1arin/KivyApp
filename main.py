@@ -40,7 +40,7 @@ class MainApp(MDApp):
 
     
     
-    def close_dialog(self, **kwargs):
+    def close_dialog(self, *args):
         self.task_list_dialog.dismiss()
 
 
