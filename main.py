@@ -43,6 +43,9 @@ class ListItemWithCheckbox(TwoLineAvatarIconListItem):
     def delete_item(self, the_list_item):
         self.parent.remove_widget(the_list_item)
 
+class LeftCheckbox(ILeftBody, MDCheckbox):
+    pass
+
 
 
 class MainApp(MDApp):
@@ -61,6 +64,9 @@ class MainApp(MDApp):
 
     def add_task(self, task, task_date):
         print(task.text, task_date)
+        self.root.ids['container'].add_widget(ListItemWithCheckbox(text = '[b]' + task.text + '[b]',
+        secondary_task = task_date))
+        task.text = ''
 
     
     
