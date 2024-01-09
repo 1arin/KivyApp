@@ -65,7 +65,7 @@ class MainApp(MDApp):
     def add_task(self, task, task_date):
         print(task.text, task_date)
         self.root.ids['container'].add_widget(ListItemWithCheckbox(text = '[b]' + task.text + '[b]',
-        secondary_task = task_date))
+        secondary_text = task_date))
         task.text = ''
 
     
