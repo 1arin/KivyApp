@@ -15,3 +15,7 @@ class Database():
 
         created_task = self.cursor.execute("SELECT id, task, due_date FROM tasks WHERE task = ? and completed = 0", (task,)).fetchall()
         return created_task[-1]
+    
+    def get_tasks(self):
+        '''Getting all tasks : complete and incomplete '''
+        incompleted_tasks = self.cursor.execute("SELECT id, task, due")
