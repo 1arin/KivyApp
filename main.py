@@ -1,3 +1,4 @@
+# Packages and sependancies
 from kivymd.app import MDApp
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -5,6 +6,9 @@ from kivymd.uix.pickers import MDDatePicker
 
 from kivymd.uix.list import TwoLineAvatarIconListItem , ILeftBody
 from kivymd.uix.selectioncontrol import MDCheckbox
+
+from database import Database
+db = Database()
 
 from datetime import datetime
 
