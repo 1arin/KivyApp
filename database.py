@@ -45,3 +45,7 @@ class Database():
         '''Delete  a task'''
         self.cursor.execute("DELETE FROM tasks WHRER id = ?", (taskid,))
         self.con.commit()
+
+    # close the connection
+    def close_db_connect(self):
+        self.con.close()
