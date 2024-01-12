@@ -25,4 +25,19 @@ class Database():
         completed_tasks = self.cursor.execute("SELECT id, task, due_date FROM tasks WHERE co,pleted = 1").fetchall()
         return incompleted_tasks, completed_tasks
     
+    #Updating the tasks
+    def mark_task_as_completed(self, taskid):
+        '''Mark tasks as completed'''
+        self.cursor.execute("UPDATE tasks SET completed = 1 WHERE id = ? ", (taskid,))
+        self.con.commit()
+
+    def mark_task_as_incompleted(self, taskid):
+        '''Mark tasks as incompleted'''
+        self.cursor.execute("UPDATE tasks SET completed = 0 WHERE id = ? ", (taskid,))
+        self.con.commit()
+
+        #return the task text
+        task_text = self.cursor.execute("SELECT task FRPM tasks WHERE id = ?",(taskid,)).fetchall()
+        return task_text[0][0]
+    
     
