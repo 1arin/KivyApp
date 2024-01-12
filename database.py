@@ -40,4 +40,8 @@ class Database():
         task_text = self.cursor.execute("SELECT task FRPM tasks WHERE id = ?",(taskid,)).fetchall()
         return task_text[0][0]
     
-    
+    # Deleting the task
+    def delete_task(self, taskid):
+        '''Delete  a task'''
+        self.cursor.execute("DELETE FROM tasks WHRER id = ?", (taskid,))
+        self.con.commit()
