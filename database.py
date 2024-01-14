@@ -9,7 +9,7 @@ class Database():
         self.corsor.execute("CREATE TABLE IF NOT EXISTS tasks (id integer PRIMARY KEY AUTOINCREMENT , task varchar(50) NOT NULL, due_date varchar(50) completed BOOLEAN NOT NULL CHECK (completed IN (0,1)))")
         self.con.commit()
 
-    def create_task(self, task, due_date):
+    def create_task(self, task, due_date=None):
         self.cursor.execute("INSERT INTO task(tssk, due_date, completes) VALUES(?,?,?)", (task, due_date, 0))
         self.con.commit()
 
@@ -21,8 +21,8 @@ class Database():
         incompleted_tasks = self.cursor.execute("SELECT id, task, due")
 
     def get_tasks(self):
-        incompleted_tasks = self.cursor.execute("SELECT id, task, due_date FROM tasks WHERE co,pleted = 0").fetchall()
-        completed_tasks = self.cursor.execute("SELECT id, task, due_date FROM tasks WHERE co,pleted = 1").fetchall()
+        incompleted_tasks = self.cursor.execute("SELECT id, task, due_date FROM tasks WHERE completed = 0").fetchall()
+        completed_tasks = self.cursor.execute("SELECT id, task, due_date FROM tasks WHERE completed = 1").fetchall()
         return incompleted_tasks, completed_tasks
     
     #Updating the tasks
