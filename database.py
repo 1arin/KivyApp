@@ -3,10 +3,10 @@ import sqlite3
 class Database():
     def __init__(self):
         self.con = sqlite3.connect("task-database.db")
-        self.cursor = self.con.corsor()
+        self.cursor = self.con.cursor()
 
     def create_task_table(self):
-        self.corsor.execute("CREATE TABLE IF NOT EXISTS task(id integer PRIMARY KEY AUTOINCREMENT , YASK VARCHAR(50) NOT NULL, complete BOOLEAN NOT NULL CHECK (completedIN (0,1)))")
+        self.corsor.execute("CREATE TABLE IF NOT EXISTS tasks (id integer PRIMARY KEY AUTOINCREMENT , task varchar(50) NOT NULL, due_date varchar(50) completed BOOLEAN NOT NULL CHECK (completed IN (0,1)))")
         self.con.commit()
 
     def create_task(self, task, due_date):
