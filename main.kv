@@ -1,11 +1,13 @@
-MDFloatLayout
+# main.kv
+
+MDFloatLayout:
     MDLabel:
         id: task_label
         halign: "center"
         markup: True
         text: "[b][u][size=48]To Do[/size][/u][/b]"
         pos_hint: {"y": .45}
-    
+
     ScrollView:
         pos_hint: {"center_y": .5, "center_x": .5}
         size_hint: .9, .8
@@ -14,9 +16,9 @@ MDFloatLayout
 
     MDFloatingActionButton:
         icon: "plus-thick"
-        on_release:app.show_task_dialog()
+        on_release: app.show_task_dialog()
         elevation_normal: 12
-        pos_hint: {"x" : .45 , "y": .04 }
+        pos_hint: {"x": .45, "y": .04}
 
 <DialogContent>:
     orientation: "vertical"
@@ -31,7 +33,7 @@ MDFloatLayout
             id: task_text
             hint_text: "Add Task ..."
             pos_hint: {"center_y": .4}
-            max_text_lenght: 50
+            max_text_length: 50
             on_text_validate: (app.add_task(task_text, date_text.text), app.close_dialog())
 
         MDIconButton:
@@ -54,6 +56,30 @@ MDFloatLayout
             text: "CANCEL"
             on_release: app.close_dialog()
 
+    #BoxLayout:
+    #   size_hint: None, None
+    #    size: "10dp", "10dp"
+
+        #MDCheckbox:
+        #   size_hint: None, None
+        #    size: "48dp", "48dp"
+
+        #BoxLayout:
+        #    size_hint: None, None
+        #    size: "10dp", "10dp"
+
+        #MDSwitch:
+        #    size_hint: None, None
+        #    size: "48dp", "48dp"
+
+        BoxLayout:
+            size_hint: None, None
+            size: "10dp", "10dp"
+
+        #MDSlider:
+        #   size_hint: None, None
+        #    size: "200dp", "48dp"
+
 <ListItemWithCheckbox>:
     id: The_list_item
     markup: True
@@ -69,4 +95,6 @@ MDFloatLayout
         text_color: 1, 0, 0, 1
         on_release:
             root.delete_item(The_list_item)
-        
+
+ 
+            
