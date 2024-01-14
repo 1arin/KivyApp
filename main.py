@@ -7,7 +7,9 @@ from kivymd.uix.pickers import MDDatePicker
 from kivymd.uix.list import TwoLineAvatarIconListItem , ILeftBody
 from kivymd.uix.selectioncontrol import MDCheckbox
 
+# Importing the database class from database file
 from database import Database
+# Instantiating the database class by creating a database file
 db = Database()
 
 from datetime import datetime
@@ -39,13 +41,16 @@ class ListItemWithCheckbox(TwoLineAvatarIconListItem):
     #Marking item as complete or incomplete
     def mark(self, check, the_list_item):
         if check.active == True:
-            the_list_item.text = '[s]' + the_list_item.text + '[s]'
+            the_list_item.text = '[s]' + the_list_item.text + '[/s]'
+            db.mark_task_as_completed(the_list_item.pk)
         else:
-            pass
+            the_list_item.text = str(db.mark_task_as_incompleted(the_list_item.pk))
 
     #deleting list item
     def delete_item(self, the_list_item):
         self.parent.remove_widget(the_list_item)
+        db.delete_task(the_list_item.pk)
+
 
 class LeftCheckbox(ILeftBody, MDCheckbox):
     pass
