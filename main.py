@@ -72,9 +72,10 @@ class MainApp(MDApp):
             self.task_list_dialog.open()
 
     def add_task(self, task, task_date):
-        print(task.text, task_date)
-        self.root.ids['container'].add_widget(ListItemWithCheckbox(text = '[b]' + task.text + '[b]',
-        secondary_text = task_date))
+        # print(task.text, task_date)
+        created_task = db.create_task(task.text, task_date)
+        self.root.ids['container'].add_widget(ListItemWithCheckbox(pk = created_task[0], text = '[b]' + created_task[1] + '[/b]',
+        secondary_text = created_task[2]))
         task.text = ''
 
     
