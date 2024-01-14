@@ -79,9 +79,23 @@ class MainApp(MDApp):
         task.text = ''
 
     
-    
     def close_dialog(self, *args):
         self.task_list_dialog.dismiss()
+
+    def on_start(self):
+        '''This is to load the saved tasks and add them to the MDList widgey'''
+        completed_tasks, incompleted_tasks = db.get_tasks()
+
+        if incompleted_tasks != []:
+            for task in incompleted_tasks:
+                add_task = ListItemWithCheckbox(pk=task[0], text=task[1], secondary_task = task[2])
+                self.root.ids.container.add_widget(add_task)
+
+        if completed_tasks != []:
+            for task in completed_tasks:
+                add_task = ListItemWithCheckbox(pk= task[0], text = "[s]" + task[1] + "[/s]" , secondary_text = task[2])
+                add_task.ids.check.active = True
+                self.root.ids.container.add_widget(add_task)
 
 
 if __name__ == "__main__":
